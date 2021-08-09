@@ -11,8 +11,8 @@ function App() {
       <BrowserRouter>
         <ShoppingCartIcon />
         <Switch>
-          <Route path="/" component={ SearchBar } />
-          <Route path="/shopping-card" component={ ShoppingCart } />
+          <Route exact path="/" component={ SearchBar } />
+          <Route exact path="/shopping-cart" component={ ShoppingCart } />
         </Switch>
       </BrowserRouter>
     </div>
