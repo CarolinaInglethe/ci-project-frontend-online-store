@@ -9,7 +9,7 @@ export async function getCategories() {
 }
 
 export async function getProductsFromCategoryAndQuery(categoryId, query) {
-  const data = await fetch(`${url}/serach?category=${categoryId}&q=${query}`)
+  const data = await fetch(`${url}/search?category=${categoryId}&q=${query}`)
     .then((response) => response.json())
     .catch((error) => console.log(error));
 
