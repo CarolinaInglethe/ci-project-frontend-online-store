@@ -10,7 +10,7 @@ class ShoppingCartIcon extends React.Component {
         to="/shopping-cart"
         data-testid="shopping-cart-button"
       >
-        <FaShoppingCart size="2vw" text-decoration="none" />
+        <FaShoppingCart size="2vw" />
       </Link>
     );
   }
