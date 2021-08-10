@@ -65,7 +65,11 @@ class SearchBar extends React.Component {
       .then((result) => this.setState({
         listProducts: result.results,
       }));
+<<<<<<< HEAD
     // console.log(productsList);
+=======
+    console.log(productsList);
+>>>>>>> ac44a8f358a9fbbfb90c5a4401051d17821a9582
   }
 
   render() {
