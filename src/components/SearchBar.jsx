@@ -33,12 +33,12 @@ class SearchBar extends React.Component {
 
   handleCategory(event) {
     const { inputValue, categories } = this.state;
-    console.log(categories)
+    console.log(categories);
     const getCategory = event.target.value;
     // console.log(getCategory);
     const filteredCategory = categories
       .filter((e) => e.name === getCategory)[0].id; // tem agro no categories? sim [{id:tal', name: tal}][0].id === 'tal'
-    console.log(filteredCategory) // aqui obtemos o id da
+    console.log(filteredCategory); // aqui obtemos o id da
     getProductsFromCategoryAndQuery(filteredCategory,
       inputValue)
       .then((result) => {
@@ -54,9 +54,9 @@ class SearchBar extends React.Component {
 
   getQuery() {
     const { inputValue, selectCategory } = this.state;
- 
+
     // const filteredCategory = categories
-    //   .filter((e) => e.name === selectCategory)[0].id; // estamos aqui 
+    //   .filter((e) => e.name === selectCategory)[0].id; // estamos aqui
 
     getProductsFromCategoryAndQuery(selectCategory,
       inputValue)
@@ -100,7 +100,7 @@ class SearchBar extends React.Component {
                   value={ category.name }
                   onChange={ this.handleCategory }
                 />
-                <span >{category.name}</span>
+                <span>{category.name}</span>
               </div>))
               : null }
           </div>
