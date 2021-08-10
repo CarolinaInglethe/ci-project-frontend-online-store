@@ -10,7 +10,6 @@ class SearchBar extends React.Component {
       inputValue: '',
       listProducts: {},
       selectCategory: '',
-      filteredCategory: [],
     };
 
     this.getQuery = this.getQuery.bind(this);
@@ -33,28 +32,19 @@ class SearchBar extends React.Component {
   }
 
   handleCategory(event) {
+    const { categories } = this.state;
+    const getCategory = event.target.value;
+    const filteredCategory = categories
+      .filter((e) => e.name === getCategory)[0].id;
+    getProductsFromCategoryAndQuery(filteredCategory,
+      '')
+      .then((result) => {
+        this.setState({
+          listProducts: result.results,
+        });
+      });
     this.setState({
       selectCategory: event.target.value,
-    },
-    () => {
-      const { selectCategory } = this.state;
-      const { categories } = this.state;
-      const getFilteredCategory = categories
-        .filter((e) => e.name === selectCategory)[0].id;
-      console.clear();
-      this.setState({
-        // listProducts: result.results,
-        filteredCategory: getFilteredCategory,
-      }, () => {
-        const { filteredCategory } = this.state;
-        getProductsFromCategoryAndQuery(filteredCategory,
-          '')
-          .then((result) => {
-            this.setState({
-              listProducts: result.results,
-            });
-          });
-      });
     });
   }
 
@@ -65,17 +55,11 @@ class SearchBar extends React.Component {
       .then((result) => this.setState({
         listProducts: result.results,
       }));
-<<<<<<< HEAD
     // console.log(productsList);
-=======
-    console.log(productsList);
->>>>>>> ac44a8f358a9fbbfb90c5a4401051d17821a9582
   }
 
   render() {
-    const { categories, listProducts, filteredCategory } = this.state;
-    console.log(filteredCategory);
-    // console.log(listProducts);
+    const { categories, listProducts } = this.state;
 
     return (
       <section>
