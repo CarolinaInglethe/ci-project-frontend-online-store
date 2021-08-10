@@ -1,6 +1,5 @@
 import React from 'react';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
-import ProductCard from './ProductCard'
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -42,57 +41,68 @@ class SearchBar extends React.Component {
     const { inputValue, selectCategory } = this.state;
     const productsList = getProductsFromCategoryAndQuery(selectCategory,
       inputValue)
-      .then((result) => result);
-
-    this.setState({
-      listProducts: productsList,
-    });
+      .then((result) => this.setState({
+        listProducts: result.results,
+      }));
+    console.log(productsList);
   }
 
   render() {
     const { categories, listProducts } = this.state;
     console.log(listProducts);
     return (
-      <form>
-        <label htmlFor="search-input" data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-          <input
-            type="text"
-            id="search-input"
-            data-testid="query-input"
-            onChange={ this.handleChange }
-          />
-          <button type="button" data-testid="query-button" onClick={ this.getQuery }>
-            Pesquisar
-          </button>
-        </label>
+      <section>
+        <header>
+          <label
+            htmlFor="search-input"
+            data-testid="home-initial-message"
+          >
+            Digite algum termo de pesquisa ou escolha uma categoria.
+            <input
+              type="text"
+              id="search-input"
+              data-testid="query-input"
+              onChange={ this.handleChange }
+            />
+            <button type="button" data-testid="query-button" onClick={ this.getQuery }>
+              Pesquisar
+            </button>
+          </label>
+        </header>
 
-        <div>
-          { categories ? categories.map((category) => (
-            <div key={ category.id }>
-              <input
-                name="1"
-                type="radio"
-                value={ category.name }
-                onChange={ this.handleCategory }
-              />
-              <span data-testid="category">{category.name}</span>
-            </div>))
-            : null }
-        </div>
+        <section className="container">
+          <div className="categories">
+            { categories ? categories.map((category) => (
+              <div key={ category.id }>
+                <input
+                  name="1"
+                  type="radio"
+                  value={ category.name }
+                  onChange={ this.handleCategory }
+                />
+                <span data-testid="category">{category.name}</span>
+              </div>))
+              : null }
+          </div>
 
-        {
-        /*
-        <div>
-          {
-            listProducts ? listProducts.map((product) => (
-              <ProductCard key={product.} product={ product } />
-            )) : <p>Nenhum produto foi encontrado</p>
-          }
-         </div>
-         */
-        }
-      </form>
+          <div className="products">
+            {
+              listProducts.length > 0 ? listProducts.map((product) => (
+                <div
+                  key={ product.id }
+                  className="card-product"
+                  data-testid="product"
+                >
+                  <p>{ product.title }</p>
+                  <img src={ product.thumbnail } alt="foto" width="100px" />
+                  <p>{ product.price }</p>
+                </div>
+              )) : <p>Nenhum produto foi encontrado</p>
+            }
+          </div>
+        </section>
+
+      </section>
     );
   }
 }
