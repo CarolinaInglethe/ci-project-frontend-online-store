@@ -32,34 +32,42 @@ class SearchBar extends React.Component {
   }
 
   handleCategory(event) {
-    const { categories } = this.state;
+    const { inputValue, categories } = this.state;
+    console.log(categories);
     const getCategory = event.target.value;
+    // console.log(getCategory);
     const filteredCategory = categories
-      .filter((e) => e.name === getCategory)[0].id;
+      .filter((e) => e.name === getCategory)[0].id; // tem agro no categories? sim [{id:tal', name: tal}][0].id === 'tal'
+    console.log(filteredCategory); // aqui obtemos o id da
     getProductsFromCategoryAndQuery(filteredCategory,
-      '')
+      inputValue)
       .then((result) => {
+        // console.log(result.results);
         this.setState({
           listProducts: result.results,
         });
       });
     this.setState({
-      selectCategory: event.target.value,
+      selectCategory: filteredCategory,
     });
   }
 
   getQuery() {
     const { inputValue, selectCategory } = this.state;
+
+    // const filteredCategory = categories
+    //   .filter((e) => e.name === selectCategory)[0].id; // estamos aqui
+
     getProductsFromCategoryAndQuery(selectCategory,
       inputValue)
       .then((result) => this.setState({
         listProducts: result.results,
       }));
-    // console.log(productsList);
   }
 
   render() {
     const { categories, listProducts } = this.state;
+    // console.log(listProducts);
 
     return (
       <section>
@@ -86,12 +94,13 @@ class SearchBar extends React.Component {
             { categories ? categories.map((category) => (
               <div key={ category.id }>
                 <input
+                  data-testid="category"
                   name="1"
                   type="radio"
                   value={ category.name }
                   onChange={ this.handleCategory }
                 />
-                <span data-testid="category">{category.name}</span>
+                <span>{category.name}</span>
               </div>))
               : null }
           </div>
