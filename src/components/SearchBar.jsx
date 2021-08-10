@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+// import ProductDetails from './ProductDetails';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -50,6 +52,7 @@ class SearchBar extends React.Component {
     this.setState({
       selectCategory: filteredCategory,
     });
+    console.log(this.props);
   }
 
   getQuery() {
@@ -116,6 +119,13 @@ class SearchBar extends React.Component {
                   <p>{ product.title }</p>
                   <img src={ product.thumbnail } alt="foto" width="100px" />
                   <p>{ product.price }</p>
+                  <Link
+                    to={ `/product-details/${product}` }
+                    func={ this.handleChange }
+                    data-testid="product-detail-link"
+                  >
+                    Detalhes
+                  </Link>
                 </div>
               )) : <p>Nenhum produto foi encontrado</p>
             }
