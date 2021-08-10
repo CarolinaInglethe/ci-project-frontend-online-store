@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import SearchBar from './components/SearchBar';
 import ShoppingCart from './pages/ShoppingCart';
+import SearchBar from './components/SearchBar';
 import ShoppingCartIcon from './components/ShoppingCartIcon';
+import ProductDetails from './components/ProductDetails';
 
 function App() {
   return (
@@ -12,7 +13,11 @@ function App() {
         <ShoppingCartIcon />
         <Switch>
           <Route exact path="/" component={ SearchBar } />
-          <Route exact path="/shopping-cart" component={ ShoppingCart } />
+          <Route path="/shopping-cart" component={ ShoppingCart } />
+          <Route
+            path="/product-details/:id"
+            component={ ProductDetails }
+          />
         </Switch>
       </BrowserRouter>
     </div>
