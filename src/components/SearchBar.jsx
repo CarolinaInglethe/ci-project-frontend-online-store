@@ -32,6 +32,17 @@ class SearchBar extends React.Component {
   }
 
   handleCategory(event) {
+    const { categories } = this.state;
+    const getCategory = event.target.value;
+    const filteredCategory = categories
+      .filter((e) => e.name === getCategory)[0].id;
+    getProductsFromCategoryAndQuery(filteredCategory,
+      '')
+      .then((result) => {
+        this.setState({
+          listProducts: result.results,
+        });
+      });
     this.setState({
       selectCategory: event.target.value,
     });
@@ -39,17 +50,17 @@ class SearchBar extends React.Component {
 
   getQuery() {
     const { inputValue, selectCategory } = this.state;
-    const productsList = getProductsFromCategoryAndQuery(selectCategory,
+    getProductsFromCategoryAndQuery(selectCategory,
       inputValue)
       .then((result) => this.setState({
         listProducts: result.results,
       }));
-    console.log(productsList);
+    // console.log(productsList);
   }
 
   render() {
     const { categories, listProducts } = this.state;
-    console.log(listProducts);
+
     return (
       <section>
         <header>
