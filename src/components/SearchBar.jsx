@@ -21,21 +21,35 @@ class SearchBar extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    getCategories()
-      .then((result) => this.setState({
-        categories: result,
-      }));
-  }
+  // componentDidMount() {
+  //   getCategories()
+  //     .then((result) => this.setState({
+  //       categories: result,
+  //     }));
+  //     console.log(this.props.location.state)
+  //   //   const { location: { state: { product } } } = this.prop
+  //   //   // const { location } = this.prop
+  //   // if ( product ) {
+  //   //   this.setState({
+  //   //     addToCart: product,
+  //   //   });
+  //   // }
+  // }
 
   handleClick(event) {
     const { listProducts, addToCart } = this.state;
     const productId = event.target.id;
     const filterProduct = listProducts.filter((result) => result.id === productId);
-    const [objectProduct] = filterProduct;
+    const [objectProduct] = filterProduct; // sem filtro: [...addToCart, objectProduct]
+    const sumOfArrays = [...addToCart, objectProduct]; // aqui com filtro
+    const newArray = [...new Set(sumOfArrays)];
+    console.log(newArray);
     this.setState({
-      addToCart: [...addToCart, objectProduct],
+      addToCart: [...addToCart, objectProduct], // para ter filtro aqui newArray
     });
+    // this.setState({
+    //   addToCart: newArray, // para ter filtro aqui newArray
+    // });
   }
 
   handleChange(event) {
