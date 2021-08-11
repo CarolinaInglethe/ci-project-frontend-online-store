@@ -4,10 +4,16 @@ import { FaShoppingCart } from 'react-icons/fa';
 
 class ShoppingCartIcon extends React.Component {
   render() {
+    console.log(this.props);
     return (
       <Link
+        to={ {
+          pathname: '/shopping-cart',
+          state: {
+            product: this.props,
+          },
+        } }
         className="link"
-        to="/shopping-cart"
         data-testid="shopping-cart-button"
       >
         <FaShoppingCart size="2vw" />
