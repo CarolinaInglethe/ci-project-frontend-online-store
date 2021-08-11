@@ -40,7 +40,7 @@ class ShoppingCart extends React.Component {
           voltar
         </Link>
         {
-          addToCart.length !== 0 && addToCart !== undefined ? addToCart.map((product) => (
+          addToCart && addToCart.length !== 0 ? addToCart.map((product) => (
             <div key={ product.id }>
               <p data-testid="shopping-cart-product-name">{ product.title }</p>
               <img src={ product.thumbnail } alt="foto" width="100px" />
