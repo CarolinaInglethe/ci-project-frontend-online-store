@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
-// import ProductDetails from './ProductDetails';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -120,8 +119,12 @@ class SearchBar extends React.Component {
                   <img src={ product.thumbnail } alt="foto" width="100px" />
                   <p>{ product.price }</p>
                   <Link
-                    to={ `/product-details/${product}` }
-                    func={ this.handleChange }
+                    to={ {
+                      pathname: `/product-details/${product.id}`,
+                      state: {
+                        product: { product },
+                      },
+                    } }
                     data-testid="product-detail-link"
                   >
                     Detalhes
