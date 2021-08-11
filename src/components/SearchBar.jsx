@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getProductsFromCategoryAndQuery } from '../services/api';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import ShoppingCartIcon from './ShoppingCartIcon';
 
 class SearchBar extends React.Component {
@@ -21,20 +21,20 @@ class SearchBar extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // componentDidMount() {
-  //   getCategories()
-  //     .then((result) => this.setState({
-  //       categories: result,
-  //     }));
-  //     console.log(this.props.location.state)
-  //   //   const { location: { state: { product } } } = this.prop
-  //   //   // const { location } = this.prop
-  //   // if ( product ) {
-  //   //   this.setState({
-  //   //     addToCart: product,
-  //   //   });
-  //   // }
-  // }
+  componentDidMount() {
+    getCategories()
+      .then((result) => this.setState({
+        categories: result,
+      }));
+    //  console.log(this.props.location.state);
+    // const { location: { state: { product } } } = this.prop;
+    // const { location } = this.props;
+    /* if (product) {
+      this.setState({
+       addToCart: product,
+        });
+      } */
+  }
 
   handleClick(event) {
     const { listProducts, addToCart } = this.state;
