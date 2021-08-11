@@ -3,23 +3,24 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 class ShoppingCart extends React.Component {
-  constructor(props) {
+  /* constructor(props) {
     super(props);
 
     this.state = {
       productState: []
     };
+  } */
 
-    componentDidMount() {
-      const { location } = this.props;
-      const { state } = location;
-      const { addToCart } = state.product;
-      this.setState({
+  /* componentDidMount() {
+    const { location } = this.props;
+    const { state } = location;
+    const { addToCart } = state.product;
+     this.setState({
         productState:
       });
-    }
-    
-    render() {
+   } */
+
+  render() {
     const { location } = this.props;
     const { state } = location;
     const { addToCart } = state.product;
@@ -40,7 +41,7 @@ class ShoppingCart extends React.Component {
         </Link>
         {
           addToCart ? addToCart.map((product) => (
-            <div>
+            <div key={ product.id }>
               <p data-testid="shopping-cart-product-name">{ product.title }</p>
               <img src={ product.thumbnail } alt="foto" width="100px" />
               <p>{ product.price }</p>
