@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ShoppingCartIcon from './ShoppingCartIcon';
 
 class ProductDetails extends React.Component {
   render() {
@@ -9,6 +10,7 @@ class ProductDetails extends React.Component {
     console.log(product);
     return (
       <div data-testid="product-detail-name">
+        <ShoppingCartIcon />
         <p>{ product.title }</p>
         <img src={ product.thumbnail } alt="foto" width="100px" />
         <p>{ product.price }</p>
