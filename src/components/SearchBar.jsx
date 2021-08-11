@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+import ShoppingCartIcon from './ShoppingCartIcon';
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -11,18 +12,44 @@ class SearchBar extends React.Component {
       inputValue: '',
       listProducts: {},
       selectCategory: '',
+      addToCart: [],
     };
 
     this.getQuery = this.getQuery.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    getCategories()
-      .then((result) => this.setState({
-        categories: result,
-      }));
+  // componentDidMount() {
+  //   getCategories()
+  //     .then((result) => this.setState({
+  //       categories: result,
+  //     }));
+  //     console.log(this.props.location.state)
+  //   //   const { location: { state: { product } } } = this.prop
+  //   //   // const { location } = this.prop
+  //   // if ( product ) {
+  //   //   this.setState({
+  //   //     addToCart: product,
+  //   //   });
+  //   // }
+  // }
+
+  handleClick(event) {
+    const { listProducts, addToCart } = this.state;
+    const productId = event.target.id;
+    const filterProduct = listProducts.filter((result) => result.id === productId);
+    const [objectProduct] = filterProduct; // sem filtro: [...addToCart, objectProduct]
+    const sumOfArrays = [...addToCart, objectProduct]; // aqui com filtro
+    const newArray = [...new Set(sumOfArrays)];
+    console.log(newArray);
+    this.setState({
+      addToCart: [...addToCart, objectProduct], // para ter filtro aqui newArray
+    });
+    // this.setState({
+    //   addToCart: newArray, // para ter filtro aqui newArray
+    // });
   }
 
   handleChange(event) {
@@ -34,16 +61,13 @@ class SearchBar extends React.Component {
 
   handleCategory(event) {
     const { inputValue, categories } = this.state;
-    console.log(categories);
     const getCategory = event.target.value;
-    // console.log(getCategory);
     const filteredCategory = categories
-      .filter((e) => e.name === getCategory)[0].id; // tem agro no categories? sim [{id:tal', name: tal}][0].id === 'tal'
-    console.log(filteredCategory); // aqui obtemos o id da
+      .filter((e) => e.name === getCategory)[0].id;
+
     getProductsFromCategoryAndQuery(filteredCategory,
       inputValue)
       .then((result) => {
-        // console.log(result.results);
         this.setState({
           listProducts: result.results,
         });
@@ -51,14 +75,10 @@ class SearchBar extends React.Component {
     this.setState({
       selectCategory: filteredCategory,
     });
-    console.log(this.props);
   }
 
   getQuery() {
     const { inputValue, selectCategory } = this.state;
-
-    // const filteredCategory = categories
-    //   .filter((e) => e.name === selectCategory)[0].id; // estamos aqui
 
     getProductsFromCategoryAndQuery(selectCategory,
       inputValue)
@@ -68,11 +88,12 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    const { categories, listProducts } = this.state;
-    // console.log(listProducts);
+    const { categories, listProducts, addToCart } = this.state;
+    // console.log(addToCart)
 
     return (
       <section>
+        <ShoppingCartIcon addToCart={ addToCart } />
         <header>
           <label
             htmlFor="search-input"
@@ -129,6 +150,14 @@ class SearchBar extends React.Component {
                   >
                     Detalhes
                   </Link>
+                  <button
+                    id={ product.id }
+                    type="button"
+                    data-testid="product-add-to-cart"
+                    onClick={ this.handleClick }
+                  >
+                    Adicionar ao Carrinho
+                  </button>
                 </div>
               )) : <p>Nenhum produto foi encontrado</p>
             }
