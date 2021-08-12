@@ -32,12 +32,12 @@ class SearchBar extends React.Component {
     const { listProducts, addToCart } = this.state;
     const productId = event.target.id;
     const filterProduct = listProducts.filter((result) => result.id === productId);
-    const [objectProduct] = filterProduct; // sem filtro: [...addToCart, objectProduct]
-    const sumOfArrays = [...addToCart, objectProduct]; // aqui com filtro
+    const [objectProduct] = filterProduct;
+    const sumOfArrays = [...addToCart, objectProduct];
     const newArray = [...new Set(sumOfArrays)];
     console.log(newArray);
     this.setState({
-      addToCart: [...addToCart, objectProduct], // para ter filtro aqui newArray
+      addToCart: [...addToCart, objectProduct],
     });
   }
 
@@ -77,7 +77,6 @@ class SearchBar extends React.Component {
 
   render() {
     const { categories, listProducts, addToCart } = this.state;
-    // console.log(addToCart)
 
     return (
       <section>
