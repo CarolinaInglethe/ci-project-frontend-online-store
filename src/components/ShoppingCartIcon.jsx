@@ -4,7 +4,6 @@ import { FaShoppingCart } from 'react-icons/fa';
 
 class ShoppingCartIcon extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <Link
         to={ {

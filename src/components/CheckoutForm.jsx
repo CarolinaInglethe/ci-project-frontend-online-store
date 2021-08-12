@@ -9,7 +9,6 @@ class CheckoutForm extends Component {
   }
 
   sumPrices(addToCart) {
-    // return addToCart[0].price + 1;
     return addToCart.reduce((result, product) => {
       const sum = result + product.price;
       return sum;
@@ -18,15 +17,11 @@ class CheckoutForm extends Component {
 
   render() {
     const { location } = this.props;
-    // console.log(location);
     const { state } = location;
     const { products } = state;
     const { products2 } = state;
     const { noRepetElementsAddToCart } = products;
     const { addToCart } = products2;
-    console.log(noRepetElementsAddToCart);
-    console.log(addToCart);
-    // const noRepetElementsAddToCart = [...new Set(addToCart)];
     return (
       <div>
         {

@@ -23,9 +23,7 @@ class ShoppingCart extends React.Component {
     this.setState({
       productState,
     });
-    console.log(productState);
   }
-
 
   subtract(event) {
     const { productState } = this.state;
@@ -36,7 +34,6 @@ class ShoppingCart extends React.Component {
     this.setState({
       productState,
     });
-    console.log(productState);
   }
 
   countRepeatedElements(array, elementToFilter) {

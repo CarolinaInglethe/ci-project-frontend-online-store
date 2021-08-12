@@ -7,13 +7,10 @@ import ShoppingCartIcon from './ShoppingCartIcon';
 class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
-
     const { location } = this.props;
     const { state } = location;
     const { listProducts } = state.listProducts;
     const { addToCart } = state.addToCart;
-    console.log(listProducts);
-
     this.state = {
       addToCart: [...addToCart],
       listProducts,
@@ -23,9 +20,6 @@ class ProductDetails extends React.Component {
   }
 
   handleClick(event) {
-    // const { location } = this.props;
-    // const { state } = location;
-    // const { addToCart } = state.addToCart;
     const { addToCart: stateAddToCart, listProducts } = this.state;
     const productId = event.target.id;
     const filterProduct = listProducts.filter((result) => result.id === productId);
@@ -40,25 +34,9 @@ class ProductDetails extends React.Component {
     const { state } = location;
     const { product } = state.product;
     const { addToCart, listProducts } = this.state;
-
-    console.log(product);
-    console.log(listProducts);
     return (
       <div data-testid="product-detail-name">
         <ShoppingCartIcon addToCart={ addToCart } />
-        {/* <Link
-          to={ {
-            pathname: '/shopping-cart',
-            state: {
-              product: [product],
-              addToCart: addToCart,
-            },
-          } }
-          className="link"
-          data-testid="shopping-cart-button"
-        >
-          <FaShoppingCart size="2vw" />
-        </Link> */}
         <p>{ product.title }</p>
         <img src={ product.thumbnail } alt="foto" width="100px" />
         <p>{ product.price }</p>
