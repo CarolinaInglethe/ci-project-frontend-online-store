@@ -33,8 +33,6 @@ class SearchBar extends React.Component {
     const productId = event.target.id;
     const filterProduct = listProducts.filter((result) => result.id === productId);
     const [objectProduct] = filterProduct;
-    const sumOfArrays = [...addToCart, objectProduct];
-    const newArray = [...new Set(sumOfArrays)];
     this.setState({
       addToCart: [...addToCart, objectProduct],
     });

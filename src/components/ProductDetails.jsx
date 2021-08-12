@@ -33,7 +33,7 @@ class ProductDetails extends React.Component {
     const { location } = this.props;
     const { state } = location;
     const { product } = state.product;
-    const { addToCart, listProducts } = this.state;
+    const { addToCart } = this.state;
     return (
       <div data-testid="product-detail-name">
         <ShoppingCartIcon addToCart={ addToCart } />
