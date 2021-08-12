@@ -5,6 +5,7 @@ import ShoppingCart from './components/ShoppingCart';
 import SearchBar from './components/SearchBar';
 // import ShoppingCartIcon from './components/ShoppingCartIcon';
 import ProductDetails from './components/ProductDetails';
+import CheckoutForm from './components/CheckoutForm';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             path="/product-details/:id"
             component={ ProductDetails }
           />
+          <Route path="/checkout" component={ CheckoutForm } />
         </Switch>
       </BrowserRouter>
     </div>
