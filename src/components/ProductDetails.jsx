@@ -70,6 +70,7 @@ class ProductDetails extends React.Component {
         >
           Adicionar ao Carrinho
         </button>
+        <textarea data-testid="product-detail-evaluation" cols="30" rows="10" />
       </div>
     );
   }
