@@ -26,6 +26,7 @@ class ShoppingCart extends React.Component {
     console.log(productState);
   }
 
+
   subtract(event) {
     const { productState } = this.state;
     const precisaSerString = `${event.target.name}`;
@@ -62,6 +63,18 @@ class ShoppingCart extends React.Component {
         >
           voltar
         </Link>
+        <Link
+          to={ {
+            pathname: '/checkout',
+            state: {
+              products: { noRepetElementsAddToCart },
+              products2: { addToCart },
+            },
+          } }
+          data-testid="checkout-products"
+        >
+          Comprar
+        </Link>
         {
           noRepetElementsAddToCart && noRepetElementsAddToCart.length > 0
             ? noRepetElementsAddToCart.map((product) => (
@@ -86,6 +99,7 @@ class ShoppingCart extends React.Component {
                     type="button"
                     name={ product.id }
                     onClick={ this.subtract }
+
                   >
                     -
                   </button>
