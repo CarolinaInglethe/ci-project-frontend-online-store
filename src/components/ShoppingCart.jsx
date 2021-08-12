@@ -16,7 +16,7 @@ class ShoppingCart extends React.Component {
     const { state } = location;
     const { addToCart } = state.product;
 
-    const clone = addToCart
+    const clone = addToCart;
     console.log(clone);
   }
 
@@ -47,6 +47,18 @@ class ShoppingCart extends React.Component {
         >
           voltar
         </Link>
+        <Link
+          to={ {
+            pathname: '/checkout',
+            state: {
+              products: { noRepetElementsAddToCart },
+              products2: { addToCart },
+            },
+          } }
+          data-testid="checkout-products"
+        >
+          Comprar
+        </Link>
         {
           noRepetElementsAddToCart && noRepetElementsAddToCart.length > 0
             ? noRepetElementsAddToCart.map((product) => (
@@ -59,14 +71,20 @@ class ShoppingCart extends React.Component {
                   { this.countRepeatedElements(addToCart, product) }
                 </p>
                 <span>
-                  <button 
-                  data-testid="product-increase-quantity" 
-                  type="button" 
-                  onClick={ this.test }>+</button>
-                  <button 
-                  data-testid="product-decrease-quantity" 
-                  type="button" 
-                  onClick={ this.increaseDecrease }>-</button>
+                  <button
+                    data-testid="product-increase-quantity"
+                    type="button"
+                    onClick={ this.test }
+                  >
+                    +
+                  </button>
+                  <button
+                    data-testid="product-decrease-quantity"
+                    type="button"
+                    onClick={ this.increaseDecrease }
+                  >
+                    -
+                  </button>
                 </span>
               </div>
 
