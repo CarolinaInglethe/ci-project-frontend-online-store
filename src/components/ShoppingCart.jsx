@@ -11,6 +11,15 @@ class ShoppingCart extends React.Component {
   //   };
   // }
 
+  test = () => {
+    const { location } = this.props;
+    const { state } = location;
+    const { addToCart } = state.product;
+
+    const clone = addToCart
+    console.log(clone);
+  }
+
   countRepeatedElements(array, elementToFilter) {
     return array.reduce((accumulator, checkingElement) => (
       elementToFilter === checkingElement ? accumulator + 1 : accumulator),
@@ -18,17 +27,14 @@ class ShoppingCart extends React.Component {
   }
 
   render() {
-    // const { productState } = this.state;
     const { location } = this.props;
     const { state } = location;
     const { addToCart } = state.product;
     const noRepetElementsAddToCart = [...new Set(addToCart)];
-    // this.setState({
-    //   productState: [...productState, ...addToCart],
-    // });
+    // const bob = () => {
+    //   console.log('oi');
+    // }
 
-    // console.log(this.doesIthaveObject(noRepetElementsAddToCart));
-    console.log(addToCart);
     return (
       <div>
         <Link
@@ -52,6 +58,16 @@ class ShoppingCart extends React.Component {
                 <p data-testid="shopping-cart-product-quantity">
                   { this.countRepeatedElements(addToCart, product) }
                 </p>
+                <span>
+                  <button 
+                  data-testid="product-increase-quantity" 
+                  type="button" 
+                  onClick={ this.test }>+</button>
+                  <button 
+                  data-testid="product-decrease-quantity" 
+                  type="button" 
+                  onClick={ this.increaseDecrease }>-</button>
+                </span>
               </div>
 
             ))
