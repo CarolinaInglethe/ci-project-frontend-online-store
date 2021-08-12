@@ -26,14 +26,6 @@ class SearchBar extends React.Component {
       .then((result) => this.setState({
         categories: result,
       }));
-    //  console.log(this.props.location.state);
-    // const { location: { state: { product } } } = this.prop;
-    // const { location } = this.props;
-    /* if (product) {
-      this.setState({
-       addToCart: product,
-        });
-      } */
   }
 
   handleClick(event) {
@@ -47,9 +39,6 @@ class SearchBar extends React.Component {
     this.setState({
       addToCart: [...addToCart, objectProduct], // para ter filtro aqui newArray
     });
-    // this.setState({
-    //   addToCart: newArray, // para ter filtro aqui newArray
-    // });
   }
 
   handleChange(event) {
@@ -64,7 +53,6 @@ class SearchBar extends React.Component {
     const getCategory = event.target.value;
     const filteredCategory = categories
       .filter((e) => e.name === getCategory)[0].id;
-
     getProductsFromCategoryAndQuery(filteredCategory,
       inputValue)
       .then((result) => {
@@ -144,6 +132,8 @@ class SearchBar extends React.Component {
                       pathname: `/product-details/${product.id}`,
                       state: {
                         product: { product },
+                        addToCart: { addToCart },
+                        listProducts: { listProducts },
                       },
                     } }
                     data-testid="product-detail-link"
