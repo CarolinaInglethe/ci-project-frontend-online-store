@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import { FaShoppingCart } from 'react-icons/fa';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ShoppingCartIcon from './ShoppingCartIcon';
 
 class ProductDetails extends React.Component {
@@ -37,9 +37,14 @@ class ProductDetails extends React.Component {
     return (
       <div data-testid="product-detail-name">
         <ShoppingCartIcon addToCart={ addToCart } />
+        <Link to="/"> Voltar </Link>
         <p>{ product.title }</p>
         <img src={ product.thumbnail } alt="foto" width="100px" />
         <p>{ product.price }</p>
+
+        { product.shipping.free_shipping
+          ? <p data-testid="free-shipping">°Frete Grátis</p> : null }
+
         <button
           id={ product.id }
           type="button"

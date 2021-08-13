@@ -79,6 +79,10 @@ class ShoppingCart extends React.Component {
                 <p data-testid="shopping-cart-product-name">{ product.title }</p>
                 <img src={ product.thumbnail } alt="foto" width="100px" />
                 <p>{ product.price }</p>
+
+                { product.shipping.free_shipping
+                  ? <p data-testid="free-shipping">°Frete Grátis</p> : null }
+
                 <p>
                   { this.countRepeatedElements(productState, product) }
                 </p>
@@ -116,6 +120,8 @@ ShoppingCart.propTypes = {
     PropTypes.string,
     PropTypes.bool,
     PropTypes.number,
+    PropTypes.object,
+    PropTypes.array,
   ).isRequired,
 };
 
