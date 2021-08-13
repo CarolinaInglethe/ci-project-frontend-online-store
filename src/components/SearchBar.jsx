@@ -74,6 +74,7 @@ class SearchBar extends React.Component {
 
   render() {
     const { categories, listProducts, addToCart } = this.state;
+    console.log(listProducts);
 
     return (
       <section>
@@ -123,6 +124,10 @@ class SearchBar extends React.Component {
                   <p>{ product.title }</p>
                   <img src={ product.thumbnail } alt="foto" width="100px" />
                   <p>{ product.price }</p>
+
+                  { product.shipping.free_shipping
+                    ? <p data-testid="free-shipping">°Frete Grátis</p> : null }
+
                   <Link
                     to={ {
                       pathname: `/product-details/${product.id}`,
