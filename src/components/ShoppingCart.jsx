@@ -3,21 +3,37 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 class ShoppingCart extends React.Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     productState: [],
-  //   };
-  // }
-
-  test = () => {
+  constructor(props) {
+    super(props);
     const { location } = this.props;
-    const { state } = location;
-    const { addToCart } = state.product;
+    const { addToCart } = location.state.product;
+    this.state = {
+      productState: addToCart,
+    };
 
-    const clone = addToCart;
-    console.log(clone);
+    this.add = this.add.bind(this);
+    this.subtract = this.subtract.bind(this);
+  }
+
+  add(event) {
+    const { productState } = this.state;
+    const precisaSerString = `${event.target.name}`;
+    const getOneProduct = productState.find((e) => e.id === precisaSerString);
+    productState.push(getOneProduct);
+    this.setState({
+      productState,
+    });
+  }
+
+  subtract(event) {
+    const { productState } = this.state;
+    const precisaSerString = `${event.target.name}`;
+    const getOneProduct = productState.find((e) => e.id === precisaSerString);
+    const locateElement = productState.indexOf(getOneProduct);
+    productState.splice(locateElement, 1);
+    this.setState({
+      productState,
+    });
   }
 
   countRepeatedElements(array, elementToFilter) {
@@ -27,13 +43,10 @@ class ShoppingCart extends React.Component {
   }
 
   render() {
+    const { productState } = this.state;
     const { location } = this.props;
-    const { state } = location;
-    const { addToCart } = state.product;
+    const { addToCart } = location.state.product;
     const noRepetElementsAddToCart = [...new Set(addToCart)];
-    // const bob = () => {
-    //   console.log('oi');
-    // }
 
     return (
       <div>
@@ -62,26 +75,28 @@ class ShoppingCart extends React.Component {
         {
           noRepetElementsAddToCart && noRepetElementsAddToCart.length > 0
             ? noRepetElementsAddToCart.map((product) => (
-              <div key={ product.id }>
+              <div data-testid="shopping-cart-product-quantity" key={ product.id }>
                 <p data-testid="shopping-cart-product-name">{ product.title }</p>
                 <img src={ product.thumbnail } alt="foto" width="100px" />
                 <p>{ product.price }</p>
-                <p>{ product.price }</p>
-                <p data-testid="shopping-cart-product-quantity">
-                  { this.countRepeatedElements(addToCart, product) }
+                <p>
+                  { this.countRepeatedElements(productState, product) }
                 </p>
                 <span>
                   <button
                     data-testid="product-increase-quantity"
                     type="button"
-                    onClick={ this.test }
+                    name={ product.id }
+                    onClick={ this.add }
                   >
                     +
                   </button>
                   <button
                     data-testid="product-decrease-quantity"
                     type="button"
-                    onClick={ this.increaseDecrease }
+                    name={ product.id }
+                    onClick={ this.subtract }
+
                   >
                     -
                   </button>
