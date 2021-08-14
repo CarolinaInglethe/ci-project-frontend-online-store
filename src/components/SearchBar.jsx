@@ -84,6 +84,7 @@ class SearchBar extends React.Component {
       <div key={ category.id }>
         <input
           data-testid="category"
+          className="categories"
           name="1"
           type="radio"
           value={ category.name }
@@ -143,12 +144,12 @@ class SearchBar extends React.Component {
         <section className="container">
 
           {/* CHAMA FUNÇÂO QUE CRIA LISTA DE CATEGORIAS DE INPUTS RADIOS : */}
-          <div className="categories">
+          <div className="categories-list">
             { this.listOfCategories(categories) }
           </div>
 
           {/* LISTA DE PRODUTOS REQUISITADOS À API POR CATEGORIA OU NOME : */}
-          <div className="products">
+          <div className="products-list">
             {
               listProducts.length > 0 ? listProducts.map((product) => (
                 <div
@@ -158,10 +159,10 @@ class SearchBar extends React.Component {
                 >
                   <p>{ product.title }</p>
                   <img src={ product.thumbnail } alt="foto" width="100px" />
-                  <p>{ product.price }</p>
+                  <p>{ `R$ ${product.price}` }</p>
 
                   { product.shipping.free_shipping
-                    ? <p data-testid="free-shipping">°Frete Grátis</p> : null }
+                    ? <p data-testid="free-shipping" id="shipping">°Frete Grátis</p> : null }
 
                   {/* LINK PARA DETALHES DO PRODUTO ATUAL : */}
                   <Link
@@ -174,6 +175,7 @@ class SearchBar extends React.Component {
                       },
                     } }
                     data-testid="product-detail-link"
+                    className="link-details"
                   >
                     Detalhes
                   </Link>
@@ -184,6 +186,7 @@ class SearchBar extends React.Component {
                     type="button"
                     data-testid="product-add-to-cart"
                     onClick={ this.handleClick }
+                    className="button-addCart"
                   >
                     Adicionar ao Carrinho
                   </button>

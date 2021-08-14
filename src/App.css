@@ -4,7 +4,8 @@ body {
 }
 
 header {
-  background-color: #A19882;
+  background-color: #FFE194;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   color: rgb(0, 0, 0);
   display: flex;
   justify-content: space-around;
@@ -34,32 +35,69 @@ header {
 .container {
   display: flex;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top: 30px;
   width: auto;
 }
 
-.categories {
-  border: 1px solid black;
-  margin-top: 10px;
+.categories-list {
+  background-color: #E6DDC6;
+  border: 1px solid rgba(0, 0, 0, 0.198);
+  border-radius: 10px;
+  margin: 0px 10px;
+  padding: 20px 0px;
+  padding-left: 30px;
   width: 30%;
 }
 
-.products {
-  border: 1px solid black;
+.categories {
+  font-size: xx-large;
+  margin: 4px;
+}
+
+.products-list {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
   right: auto;
   width: 70%;
 }
 
 .card-product {
-  border: 1px solid rgba(0, 0, 0, 0.383);
-  border-radius: 4px;
+  align-items: center;
+  background-color: #fadf9a71;
+  border: 1px solid rgba(0, 0, 0, 0.198);
+  border-radius: 30px;
   display: flex;
   flex-flow: column;
+  justify-content: space-around;
   margin: 5px;
   padding: 10px;
+  text-align: center;
   width: 25%;
 }
 
+.link-details {
+  background-color: rgba(0, 0, 0, 0.712);
+  border-radius: 4px;
+  color: white;
+  margin: 3px;
+  padding: 4px;
+  text-decoration: none;
+}
 
+.link-details:hover {
+  background-color: rgba(0, 0, 0, 0.472);
+}
+
+.button-addCart {
+  background-color: #ffe197;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  border-radius: 4px;
+  padding: 3px;
+  text-decoration: none;
+}
+
+#shipping {
+  background-color: rgba(115, 255, 0, 0.315);
+  padding: 2px;
+}
