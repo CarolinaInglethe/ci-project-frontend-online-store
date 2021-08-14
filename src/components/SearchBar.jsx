@@ -101,22 +101,8 @@ class SearchBar extends React.Component {
     return (
       <section>
 
-        {/* LINK PARA CARRINHO DE COMPRAS : */}
-        <Link
-          to={ {
-            pathname: '/shopping-cart',
-            state: {
-              product: { addToCart },
-            },
-          } }
-          className="link"
-          data-testid="shopping-cart-button"
-        >
-          <FaShoppingCart size="2vw" />
-        </Link>
-
-        {/* INPUT PARA PESQUISAR PRODUTOS POR NOME: */}
         <header>
+          {/* INPUT PARA PESQUISAR PRODUTOS POR NOME: */}
           <label
             htmlFor="search-input"
             data-testid="home-initial-message"
@@ -128,10 +114,30 @@ class SearchBar extends React.Component {
               data-testid="query-input"
               onChange={ this.handleChange }
             />
-            <button type="button" data-testid="query-button" onClick={ this.getQuery }>
+            <button
+              type="button"
+              id="search-button"
+              data-testid="query-button"
+              onClick={ this.getQuery }
+            >
               Pesquisar
             </button>
           </label>
+
+          {/* LINK PARA CARRINHO DE COMPRAS : */}
+          <Link
+            to={ {
+              pathname: '/shopping-cart',
+              state: {
+                product: { addToCart },
+              },
+            } }
+            className="link"
+            data-testid="shopping-cart-button"
+          >
+            <FaShoppingCart className="link-cart" />
+          </Link>
+
         </header>
 
         <section className="container">
