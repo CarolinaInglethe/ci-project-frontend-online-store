@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import ShoppingCartIcon from './ShoppingCartIcon';
+// import ShoppingCartIcon from './ShoppingCartIcon';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -36,7 +36,20 @@ class ProductDetails extends React.Component {
     const { addToCart } = this.state;
     return (
       <div data-testid="product-detail-name">
-        <ShoppingCartIcon addToCart={ addToCart } />
+
+        <Link
+          to={ {
+            pathname: '/shopping-cart',
+            state: {
+              product: { addToCart },
+            },
+          } }
+          className="link"
+          data-testid="shopping-cart-button"
+        >
+          <FaShoppingCart size="2vw" />
+        </Link>
+
         <Link to="/"> Voltar </Link>
         <p>{ product.title }</p>
         <img src={ product.thumbnail } alt="foto" width="100px" />

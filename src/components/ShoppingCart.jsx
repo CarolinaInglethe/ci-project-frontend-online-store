@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 class ShoppingCart extends React.Component {
   constructor(props) {
     super(props);
-    const { location } = this.props;
-    const { addToCart } = location.state.product;
+
+    const { location: { state: { product: { addToCart } } } } = this.props;
+
     this.state = {
       productState: addToCart,
     };
