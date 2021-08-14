@@ -162,7 +162,7 @@ class SearchBar extends React.Component {
                   <p>{ `R$ ${product.price}` }</p>
 
                   { product.shipping.free_shipping
-                    ? <p data-testid="free-shipping" id="shipping">°Frete Grátis</p> : null }
+                    ? <p data-testid="free-shipping" id="shi"> °Frete Grátis </p> : null }
 
                   {/* LINK PARA DETALHES DO PRODUTO ATUAL : */}
                   <Link
