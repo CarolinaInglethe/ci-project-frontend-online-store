@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -24,6 +25,11 @@ class CheckoutForm extends Component {
     const { addToCart } = products2;
     return (
       <div>
+
+        <header>
+          <Link to="/" className="link-voltar">Voltar</Link>
+        </header>
+
         {
           noRepetElementsAddToCart.map((product) => (
             <div key={ product.id }>

@@ -37,36 +37,54 @@ class ProductDetails extends React.Component {
     return (
       <div data-testid="product-detail-name">
 
-        <Link
-          to={ {
-            pathname: '/shopping-cart',
-            state: {
-              product: { addToCart },
-            },
-          } }
-          className="link"
-          data-testid="shopping-cart-button"
-        >
-          <FaShoppingCart size="2vw" />
-        </Link>
+        <header>
+          <Link to="/" className="link-voltar"> Voltar </Link>
 
-        <Link to="/"> Voltar </Link>
-        <p>{ product.title }</p>
-        <img src={ product.thumbnail } alt="foto" width="100px" />
-        <p>{ product.price }</p>
+          <Link
+            to={ {
+              pathname: '/shopping-cart',
+              state: {
+                product: { addToCart },
+              },
+            } }
+            className="link-cart"
+            data-testid="shopping-cart-button"
+          >
+            <FaShoppingCart />
+          </Link>
+        </header>
 
-        { product.shipping.free_shipping
-          ? <p data-testid="free-shipping">°Frete Grátis</p> : null }
+        <div className="card-product-detail">
+          <p>{ product.title }</p>
+          <img src={ product.thumbnail } alt="foto" width="160px" />
+          <p>{ `R$ ${product.price}` }</p>
 
-        <button
-          id={ product.id }
-          type="button"
-          data-testid="product-detail-add-to-cart"
-          onClick={ this.handleClick }
-        >
-          Adicionar ao Carrinho
-        </button>
-        <textarea data-testid="product-detail-evaluation" cols="30" rows="10" />
+          { product.shipping.free_shipping
+            ? <p data-testid="free-shipping">°Frete Grátis</p> : null }
+
+          <button
+            id={ product.id }
+            type="button"
+            data-testid="product-detail-add-to-cart"
+            onClick={ this.handleClick }
+            className="button-addCart"
+          >
+            Adicionar ao Carrinho
+          </button>
+
+          <label htmlFor="textarea" id="text-area-coment">
+            Escreva algum comentário :
+            <textarea
+              name="textarea"
+              id="textarea"
+              data-testid="product-detail-evaluation"
+              cols="30"
+              rows="10"
+            />
+          </label>
+
+        </div>
+
       </div>
     );
   }

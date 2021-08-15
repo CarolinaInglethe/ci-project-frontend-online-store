@@ -9,7 +9,7 @@ header {
   color: rgb(0, 0, 0);
   display: flex;
   justify-content: space-around;
-  padding: 15px 0px;
+  padding: 5px 0px;
   text-align: center;
   width: 100%;
 }
@@ -30,6 +30,7 @@ header {
 
 .link-cart:hover {
   color: rgba(0, 0, 0, 0.603);
+  font-size: 35px;
 }
 
 .container {
@@ -90,14 +91,103 @@ header {
 }
 
 .button-addCart {
-  background-color: #ffe197;
-  border: 1px solid rgba(0, 0, 0, 0.281);
+  background-color: #ffe96a;
+  border: 1px solid rgba(0, 0, 0, 0.157);
   border-radius: 4px;
+  color: black;
   padding: 3px;
   text-decoration: none;
+}
+
+.button-addCart:hover {
+  background-color: rgb(255, 248, 153);
 }
 
 #shi {
   background-color: rgba(115, 255, 0, 0.315);
   padding: 2px;
+}
+
+.link-voltar {
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.856);
+  font-size: x-large;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.link-inicio:hover {
+  color: black;
+}
+
+.card-product-detail {
+  align-items: center;
+  background-color: #fadf9a71;
+  border: 1px solid rgba(0, 0, 0, 0.198);
+  border-radius: 30px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px;
+  text-align: center;
+  width: 40%;
+}
+
+#text-area-coment {
+  display: flex;
+  flex-flow: column;
+  margin-top: 40px;
+}
+
+.link-buy {
+  border-radius: 5px;
+  color: rgba(25, 42, 11, 0.787);
+  font-size: x-large;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.link-buy:hover {
+  color: black;
+}
+
+.card-product-cart {
+  align-items: center;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.109);
+  border-radius: 30px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px;
+  text-align: center;
+  width: 85%;
+}
+
+.buttons-add-remove-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.button-more-less {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  border-radius: 5px;
+  margin: 4px;
+  padding: 5px;
+}
+
+.button-more-less:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+#cart-title {
+  width: 30%;
 }
