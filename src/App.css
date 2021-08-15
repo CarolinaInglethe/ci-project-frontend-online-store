@@ -9,8 +9,8 @@ header {
   color: black;
   display: flex;
   justify-content: space-around;
-  padding-top: 5px;
   padding-bottom: 5px;
+  padding-top: 5px;
   text-align: center;
   width: 100%;
 }
@@ -47,8 +47,8 @@ header {
   border-radius: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  padding-top: 20px;
   padding-bottom: 20px;
+  padding-top: 20px;
   padding-left: 30px;
   width: 30%;
 }
