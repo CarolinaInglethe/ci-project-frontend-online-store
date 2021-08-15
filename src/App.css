@@ -66,7 +66,7 @@ header {
 .card-product {
   align-items: center;
   background-color: #fadf9a71;
-  border: 1px solid rgba(0, 0, 0, 0.198);
+  border: 1px solid rgba(0, 0, 0, 0.116);
   border-radius: 30px;
   display: flex;
   flex-flow: column;
@@ -123,7 +123,7 @@ header {
 
 .card-product-detail {
   align-items: center;
-  background-color: #fadf9a71;
+  background-color: rgba(255, 255, 255, 0.849);
   border: 1px solid rgba(0, 0, 0, 0.198);
   border-radius: 30px;
   display: flex;
@@ -163,7 +163,7 @@ header {
   display: flex;
   flex-flow: row;
   justify-content: space-around;
-  margin: auto;
+  margin: 2px auto;
   margin-top: 50px;
   padding: 10px;
   text-align: center;
@@ -190,4 +190,40 @@ header {
 
 #cart-title {
   width: 30%;
+}
+
+#total-price {
+  background-color: rgba(115, 255, 0, 0.116);
+  padding: 2px;
+  text-align: center;
+}
+
+#form-info {
+  background-color: rgba(255, 255, 255, 0.603);
+  display: flex;
+  flex-flow: row wrap;
+  margin: 10px 20px;
+  padding: 50px 20px;
+}
+
+.labels-checkout {
+  margin: 25px 10px;
+}
+
+#button-buy {
+  background-color: rgba(120, 179, 61, 0.616);
+  border: 1px solid rgba(0, 0, 0, 0.411);
+  border-radius: 4px;
+  font-size: 17px;
+  margin: 20px;
+  padding: 5px;
+}
+
+#button-buy:hover {
+  background-color: rgba(132, 192, 72, 0.863);
+}
+
+h3 {
+  color: rgba(0, 0, 0, 0.781);
+  margin: 30px;
 }
