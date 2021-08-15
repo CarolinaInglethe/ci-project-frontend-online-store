@@ -111,13 +111,13 @@ class SearchBar extends React.Component {
             Digite algum termo de pesquisa ou escolha uma categoria.
             <input
               type="text"
-              id="search-input"
+              className="search-input"
               data-testid="query-input"
               onChange={ this.handleChange }
             />
             <button
               type="button"
-              id="search-button"
+              className="search-button"
               data-testid="query-button"
               onClick={ this.getQuery }
             >
@@ -162,7 +162,8 @@ class SearchBar extends React.Component {
                   <p>{ `R$ ${product.price}` }</p>
 
                   { product.shipping.free_shipping
-                    ? <p data-testid="free-shipping" id="shi"> °Frete Grátis </p> : null }
+                    ? <p data-testid="free-shipping" className="shi">°Frete Grátis </p>
+                    : null }
 
                   {/* LINK PARA DETALHES DO PRODUTO ATUAL : */}
                   <Link

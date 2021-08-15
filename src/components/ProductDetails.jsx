@@ -72,7 +72,7 @@ class ProductDetails extends React.Component {
             Adicionar ao Carrinho
           </button>
 
-          <label htmlFor="textarea" id="text-area-coment">
+          <label htmlFor="textarea" className="text-area-coment">
             Escreva algum comentário :
             <textarea
               name="textarea"

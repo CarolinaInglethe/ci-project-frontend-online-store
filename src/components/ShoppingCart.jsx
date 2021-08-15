@@ -87,14 +87,15 @@ class ShoppingCart extends React.Component {
                 key={ product.id }
                 className="card-product-cart"
               >
-                <p data-testid="shopping-cart-product-name" id="cart-title">
+                <p data-testid="shopping-cart-product-name" className="cart-title">
                   { product.title }
                 </p>
                 <img src={ product.thumbnail } alt="foto" width="100px" />
                 <p>{ `R$ ${product.price}` }</p>
 
                 { product.shipping.free_shipping
-                  ? <p data-testid="free-shipping" id="shi">°Frete Grátis</p> : null }
+                  ? <p data-testid="free-shipping" className="shi">°Frete Grátis</p>
+                  : null }
 
                 <div className="buttons-add-remove-container">
                   <button

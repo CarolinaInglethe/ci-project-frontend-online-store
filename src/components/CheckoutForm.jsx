@@ -83,7 +83,7 @@ class CheckoutForm extends Component {
           </label>
 
           <div>
-            <button type="submit" id="button-buy">Finalizar</button>
+            <button type="submit" className="button-buy">Finalizar</button>
           </div>
         </form>
       </div>
