@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import ShoppingCartIcon from './ShoppingCartIcon';
+// import ShoppingCartIcon from './ShoppingCartIcon';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -36,24 +36,55 @@ class ProductDetails extends React.Component {
     const { addToCart } = this.state;
     return (
       <div data-testid="product-detail-name">
-        <ShoppingCartIcon addToCart={ addToCart } />
-        <Link to="/"> Voltar </Link>
-        <p>{ product.title }</p>
-        <img src={ product.thumbnail } alt="foto" width="100px" />
-        <p>{ product.price }</p>
 
-        { product.shipping.free_shipping
-          ? <p data-testid="free-shipping">°Frete Grátis</p> : null }
+        <header>
+          <Link to="/" className="link-voltar"> Voltar </Link>
 
-        <button
-          id={ product.id }
-          type="button"
-          data-testid="product-detail-add-to-cart"
-          onClick={ this.handleClick }
-        >
-          Adicionar ao Carrinho
-        </button>
-        <textarea data-testid="product-detail-evaluation" cols="30" rows="10" />
+          <Link
+            to={ {
+              pathname: '/shopping-cart',
+              state: {
+                product: { addToCart },
+              },
+            } }
+            className="link-cart"
+            data-testid="shopping-cart-button"
+          >
+            <FaShoppingCart />
+          </Link>
+        </header>
+
+        <div className="card-product-detail">
+          <p>{ product.title }</p>
+          <img src={ product.thumbnail } alt="foto" width="160px" />
+          <p>{ `R$ ${product.price}` }</p>
+
+          { product.shipping.free_shipping
+            ? <p data-testid="free-shipping">°Frete Grátis</p> : null }
+
+          <button
+            id={ product.id }
+            type="button"
+            data-testid="product-detail-add-to-cart"
+            onClick={ this.handleClick }
+            className="button-addCart"
+          >
+            Adicionar ao Carrinho
+          </button>
+
+          <label htmlFor="textarea" className="text-area-coment">
+            Escreva algum comentário :
+            <textarea
+              name="textarea"
+              id="textarea"
+              data-testid="product-detail-evaluation"
+              cols="30"
+              rows="10"
+            />
+          </label>
+
+        </div>
+
       </div>
     );
   }

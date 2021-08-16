@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -24,53 +25,66 @@ class CheckoutForm extends Component {
     const { addToCart } = products2;
     return (
       <div>
-        {
-          noRepetElementsAddToCart.map((product) => (
-            <div key={ product.id }>
-              <p>{ product.title }</p>
-              <img src={ product.thumbnail } alt="foto" width="100px" />
-              <p>{ product.price }</p>
-            </div>
-          ))
-        }
-        <p>
+
+        <header>
+          <Link to="/" className="link-voltar">Voltar</Link>
+        </header>
+
+        <div>
+          <h3>Revise seus Produtos:</h3>
           {
-            this.sumPrices(addToCart)
+            noRepetElementsAddToCart.map((product) => (
+              <div key={ product.id } className="card-product-cart">
+                <img src={ product.thumbnail } alt="foto" width="70px" />
+                <p>{product.title}</p>
+                <p>{ `R$ ${product.price}` }</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <p className="total-price">
+          {
+            `R$ ${this.sumPrices(addToCart)}`
           }
         </p>
 
-        <form>
-          <label htmlFor="checkout-fullname">
+        <h3>Informações do Comprador:</h3>
+
+        <form id="form-info">
+          <label htmlFor="checkout-fullname" className="labels-checkout">
             Nome completo
             <input type="text" data-testid="checkout-fullname" />
           </label>
 
-          <label htmlFor="checkout-email">
+          <label htmlFor="checkout-email" className="labels-checkout">
             Email
             <input type="email" data-testid="checkout-email" />
           </label>
 
-          <label htmlFor="checkout-cpf">
+          <label htmlFor="checkout-cpf" className="labels-checkout">
             CPF
             <input type="text" data-testid="checkout-cpf" />
           </label>
 
-          <label htmlFor="checkout-phone">
+          <label htmlFor="checkout-phone" className="labels-checkout">
             Telefone
             <input type="text" data-testid="checkout-phone" />
           </label>
 
-          <label htmlFor="checkout-cep">
+          <label htmlFor="checkout-cep" className="labels-checkout">
             CEP
             <input type="text" data-testid="checkout-cep" />
           </label>
 
-          <label htmlFor="checkout-address">
+          <label htmlFor="checkout-address" className="labels-checkout">
             Endereço
             <input type="text" data-testid="checkout-address" />
           </label>
 
-          <button type="submit">Finalizar</button>
+          <div>
+            <button type="submit" className="button-buy">Finalizar</button>
+          </div>
         </form>
       </div>
     );

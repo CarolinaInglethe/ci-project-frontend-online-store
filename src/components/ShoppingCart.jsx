@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 class ShoppingCart extends React.Component {
   constructor(props) {
     super(props);
-    const { location } = this.props;
-    const { addToCart } = location.state.product;
+
+    const { location: { state: { product: { addToCart } } } } = this.props;
+
     this.state = {
       productState: addToCart,
     };
@@ -50,61 +51,77 @@ class ShoppingCart extends React.Component {
 
     return (
       <div>
-        <Link
-          to={ {
-            pathname: '/',
-            state: {
-              product: addToCart,
-            },
-          } }
-        >
-          voltar
-        </Link>
-        <Link
-          to={ {
-            pathname: '/checkout',
-            state: {
-              products: { noRepetElementsAddToCart },
-              products2: { addToCart },
-            },
-          } }
-          data-testid="checkout-products"
-        >
-          Comprar
-        </Link>
+
+        <header>
+          <Link
+            to={ {
+              pathname: '/',
+              state: {
+                product: addToCart,
+              },
+            } }
+            className="link-voltar"
+          >
+            voltar
+          </Link>
+          <Link
+            to={ {
+              pathname: '/checkout',
+              state: {
+                products: { noRepetElementsAddToCart },
+                products2: { addToCart },
+              },
+            } }
+            data-testid="checkout-products"
+            className="link-buy"
+          >
+            Comprar
+          </Link>
+        </header>
+
         {
           noRepetElementsAddToCart && noRepetElementsAddToCart.length > 0
             ? noRepetElementsAddToCart.map((product) => (
-              <div data-testid="shopping-cart-product-quantity" key={ product.id }>
-                <p data-testid="shopping-cart-product-name">{ product.title }</p>
+              <div
+                data-testid="shopping-cart-product-quantity"
+                key={ product.id }
+                className="card-product-cart"
+              >
+                <p data-testid="shopping-cart-product-name" className="cart-title">
+                  { product.title }
+                </p>
                 <img src={ product.thumbnail } alt="foto" width="100px" />
-                <p>{ product.price }</p>
+                <p>{ `R$ ${product.price}` }</p>
 
                 { product.shipping.free_shipping
-                  ? <p data-testid="free-shipping">°Frete Grátis</p> : null }
+                  ? <p data-testid="free-shipping" className="shi">°Frete Grátis</p>
+                  : null }
 
-                <p>
-                  { this.countRepeatedElements(productState, product) }
-                </p>
-                <span>
+                <div className="buttons-add-remove-container">
                   <button
                     data-testid="product-increase-quantity"
                     type="button"
                     name={ product.id }
                     onClick={ this.add }
+                    className="button-more-less"
                   >
                     +
                   </button>
+
+                  <p>
+                    { this.countRepeatedElements(productState, product) }
+                  </p>
+
                   <button
                     data-testid="product-decrease-quantity"
                     type="button"
                     name={ product.id }
                     onClick={ this.subtract }
-
+                    className="button-more-less"
                   >
                     -
                   </button>
-                </span>
+                </div>
               </div>
 
             ))
