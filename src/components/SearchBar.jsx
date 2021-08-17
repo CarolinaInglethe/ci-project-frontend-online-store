@@ -230,7 +230,6 @@ class SearchBar extends React.Component {
                 </div>
               )) : <p>Nenhum produto foi encontrado</p>
             }
-            { listProducts ? <div>oi</div> : <div>boi</div> }
           </div>
         </section>
       </section>

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-// import ShoppingCartIcon from './ShoppingCartIcon';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -10,11 +9,15 @@ class ProductDetails extends React.Component {
     const { location } = this.props;
     const { state } = location;
     const { listProducts } = state.listProducts;
+    const { product } = state.product;
     const { addToCart } = state.addToCart;
+    const storaRating = localStorage.getItem(`${product.id}`);
+    const translatedRating = JSON.parse(storaRating);
 
     this.state = {
       addToCart: [...addToCart],
       listProducts,
+      rating: translatedRating,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -46,19 +49,24 @@ class ProductDetails extends React.Component {
     localStorage.removeItem(`${product.id}`);
     const rating = JSON.stringify(event.target.value);
     localStorage.setItem(`${product.id}`, rating);
+    // Esse setState é usado para forçar a página a atualizar.
+    this.setState({
+      rating: event.target.value,
+    });
   }
 
   render() {
     const { location } = this.props;
     const { state } = location;
     const { product } = state.product;
-    const { addToCart } = this.state;
-    const getRating = localStorage.getItem(`${product.id}`);
-    const getRatingTranslated = JSON.parse(getRating);
+    const { addToCart, rating } = this.state;
+    // const getRating = localStorage.getItem(`${product.id}`);
+    // const getRatingTranslated = JSON.parse(getRating);
 
     console.clear();
     console.log(addToCart);
-    console.log(localStorage);
+    console.log(`Storage do ${product.id}`, localStorage[`${product.id}`]);
+    console.log('Storage:', localStorage);
 
     return (
       <div data-testid="product-detail-name">
@@ -111,7 +119,7 @@ class ProductDetails extends React.Component {
               data-testid="product-detail-evaluation"
               cols="30"
               rows="10"
-              value={ getRatingTranslated }
+              value={ rating }
               onChange={ this.handleRating }
             />
           </label>
