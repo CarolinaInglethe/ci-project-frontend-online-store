@@ -6,13 +6,14 @@ import { getCategories, getProductsFromCategoryAndQuery } from '../services/api'
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-
+    const isLocalStorageOn = localStorage.getItem('cart');
     this.state = {
       categories: [],
       inputValue: '',
       listProducts: {},
       selectCategory: '',
-      addToCart: [],
+      // addToCart: isLocalStorageOn ? isLocalStorageOn : [],
+      addToCart: isLocalStorageOn ? JSON.parse(isLocalStorageOn) : [],
     };
 
     this.listOfCategories = this.listOfCategories.bind(this);
@@ -39,6 +40,9 @@ class SearchBar extends React.Component {
     this.setState({
       addToCart: [...addToCart, objectProduct],
     });
+    const sumAll = [...addToCart, objectProduct];
+    const jsonAddToCart = JSON.stringify(sumAll);
+    localStorage.setItem('cart', jsonAddToCart);
   }
 
   // FUNÇAO QUE GUARDA VALOR DE INPUT TEXTO NO ESTADO QUANDO ESCRITO:
@@ -97,7 +101,17 @@ class SearchBar extends React.Component {
 
   render() {
     const { categories, listProducts, addToCart } = this.state;
-    console.log(listProducts);
+    const cart = localStorage.getItem('cart');
+    const cartTranslated = JSON.parse(cart);
+    let translated;
+    if (cartTranslated) {
+      const [...getTranslated] = cartTranslated;
+      translated = getTranslated;
+      console.log(translated.length);
+    } else {
+      translated = [];
+      console.log(translated.length);
+    }
 
     return (
       <section>
@@ -136,7 +150,12 @@ class SearchBar extends React.Component {
             className="link"
             data-testid="shopping-cart-button"
           >
-            <FaShoppingCart className="link-cart" />
+            <div
+              data-testid="shopping-cart-size"
+            >
+              <FaShoppingCart className="link-cart" />
+              { translated.length }
+            </div>
           </Link>
 
         </header>

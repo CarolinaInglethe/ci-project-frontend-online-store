@@ -30,6 +30,7 @@ class ProductDetails extends React.Component {
   }
 
   render() {
+    // console.log(this.state.addToCart);
     const { location } = this.props;
     const { state } = location;
     const { product } = state.product;
@@ -50,7 +51,12 @@ class ProductDetails extends React.Component {
             className="link-cart"
             data-testid="shopping-cart-button"
           >
-            <FaShoppingCart />
+            <div
+              data-testid="shopping-cart-size"
+            >
+              <FaShoppingCart className="link-cart" />
+              { addToCart.length }
+            </div>
           </Link>
         </header>
 
