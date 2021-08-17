@@ -49,7 +49,7 @@ class CheckoutForm extends Component {
 
         <p className="total-price">
           {
-            `R$ ${this.sumPrices(addToCart)}`
+            `R$ ${this.sumPrices(addToCart).toFixed(2)}`
           }
         </p>
 

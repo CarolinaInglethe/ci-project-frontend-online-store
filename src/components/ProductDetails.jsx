@@ -11,12 +11,17 @@ class ProductDetails extends React.Component {
     const { state } = location;
     const { listProducts } = state.listProducts;
     const { addToCart } = state.addToCart;
+    const storaRating = localStorage.getItem('rating');
+    const translatedRating = JSON.parse(storaRating);
+
     this.state = {
       addToCart: [...addToCart],
       listProducts,
+      rating: translatedRating,
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleRating = this.handleRating.bind(this);
   }
 
   handleClick(event) {
@@ -37,14 +42,24 @@ class ProductDetails extends React.Component {
     });
   }
 
+  handleRating(event) {
+    this.setState({
+      rating: event.target.value,
+    });
+    localStorage.removeItem('rating');
+    const rating = JSON.stringify(event.target.value);
+    localStorage.setItem('rating', rating);
+    // console.log(event.target.value)
+  }
+
   render() {
     const { location } = this.props;
     const { state } = location;
     const { product } = state.product;
-    const { addToCart } = this.state;
+    const { addToCart, rating } = this.state;
 
-    console.clear();
-    console.log(addToCart);
+    // console.clear();
+    // console.log(addToCart);
 
     return (
       <div data-testid="product-detail-name">
@@ -97,6 +112,8 @@ class ProductDetails extends React.Component {
               data-testid="product-detail-evaluation"
               cols="30"
               rows="10"
+              value={ rating }
+              onChange={ this.handleRating }
             />
           </label>
 
