@@ -6,14 +6,13 @@ import { getCategories, getProductsFromCategoryAndQuery } from '../services/api'
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    const isLocalStorageOn = localStorage.getItem('cart');
     this.state = {
       categories: [],
       inputValue: '',
       listProducts: {},
       selectCategory: '',
       // addToCart: isLocalStorageOn ? isLocalStorageOn : [],
-      addToCart: isLocalStorageOn ? JSON.parse(isLocalStorageOn) : [],
+      addToCart: [],
     };
 
     this.listOfCategories = this.listOfCategories.bind(this);
@@ -21,6 +20,7 @@ class SearchBar extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.bob = this.handleLocalStorage.bind(this);
   }
 
   // FUNÇAO QUE CHAMA CATEGORIAS DEPOIS DE DOM CARREGADO:
@@ -29,6 +29,8 @@ class SearchBar extends React.Component {
       .then((result) => this.setState({
         categories: result,
       }));
+
+    this.handleLocalStorage();
   }
 
   // FUNÇAO ADICIONA PRODUTO E SALVA NO ARRAY DO ESTADO PARA CARRINHO:
@@ -71,10 +73,23 @@ class SearchBar extends React.Component {
     });
   }
 
+  // FUNÇAO ATRIBUI O CART DO LOCALSTORAGE AO THIS.STATE.ADDTOCART:
+  handleLocalStorage() {
+    const cart = localStorage.getItem('cart');
+    const cartTranslated = JSON.parse(cart);
+    let translated;
+    if (cartTranslated) {
+      const [...getTranslated] = cartTranslated;
+      translated = getTranslated;
+      this.setState({
+        addToCart: translated,
+      });
+    }
+  }
+
   // FUNÇAO CHAMADA PARA API PELO INPUT E CLICA BOTAO PESQUISAR:
   getQuery() {
     const { inputValue, selectCategory } = this.state;
-
     getProductsFromCategoryAndQuery(selectCategory,
       inputValue)
       .then((result) => this.setState({
@@ -107,11 +122,12 @@ class SearchBar extends React.Component {
     if (cartTranslated) {
       const [...getTranslated] = cartTranslated;
       translated = getTranslated;
-      console.log(translated.length);
     } else {
       translated = [];
-      console.log(translated.length);
     }
+
+    console.clear();
+    console.log('SearchBar addToCart', addToCart);
 
     return (
       <section>
