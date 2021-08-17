@@ -9,11 +9,31 @@ class ShoppingCart extends React.Component {
     const { location: { state: { product: { addToCart } } } } = this.props;
 
     this.state = {
-      productState: addToCart,
+      productState: [],
+      addToCart,
     };
 
     this.add = this.add.bind(this);
     this.subtract = this.subtract.bind(this);
+    this.handleLocalStorage = this.handleLocalStorage.bind(this);
+  }
+
+  componentDidMount() {
+    this.handleLocalStorage();
+  }
+
+  handleLocalStorage() {
+    const cart = localStorage.getItem('cart');
+    const cartTranslated = JSON.parse(cart);
+    let translated;
+    if (cartTranslated) {
+      const [...getTranslated] = cartTranslated;
+      translated = getTranslated;
+      this.setState({
+        productState: translated,
+        addToCart: translated,
+      });
+    }
   }
 
   add(event) {
@@ -21,8 +41,16 @@ class ShoppingCart extends React.Component {
     const precisaSerString = `${event.target.name}`;
     const getOneProduct = productState.find((e) => e.id === precisaSerString);
     productState.push(getOneProduct);
+
+    const jsonAddToCart = JSON.stringify(productState);
+    localStorage.removeItem('cart');
+    localStorage.setItem('cart', jsonAddToCart);
+    const cart = localStorage.getItem('cart');
+    const cartTranslated = JSON.parse(cart);
+
     this.setState({
-      productState,
+      productState: cartTranslated,
+      addToCart: cartTranslated,
     });
   }
 
@@ -32,22 +60,47 @@ class ShoppingCart extends React.Component {
     const getOneProduct = productState.find((e) => e.id === precisaSerString);
     const locateElement = productState.indexOf(getOneProduct);
     productState.splice(locateElement, 1);
+
+    const jsonAddToCart = JSON.stringify(productState);
+    localStorage.removeItem('cart');
+    localStorage.setItem('cart', jsonAddToCart);
+    const cart = localStorage.getItem('cart');
+    const cartTranslated = JSON.parse(cart);
+    console.log(cartTranslated);
+
     this.setState({
-      productState,
+      productState: cartTranslated,
+      addToCart: cartTranslated,
     });
   }
 
   countRepeatedElements(array, elementToFilter) {
-    return array.reduce((accumulator, checkingElement) => (
-      elementToFilter === checkingElement ? accumulator + 1 : accumulator),
-    0);
+    const arrayFiltered = array.filter((e) => e.id === elementToFilter.id);
+    return arrayFiltered.length;
   }
+  // ANTIGA FORMA:
+  // countRepeatedElements(array, elementToFilter) {
+  // return array.reduce((accumulator, checkingElement) => (
+  //   elementToFilter === checkingElement ? accumulator + 1 : accumulator),
+  // 0);
+  // }
 
   render() {
-    const { productState } = this.state;
-    const { location } = this.props;
-    const { addToCart } = location.state.product;
-    const noRepetElementsAddToCart = [...new Set(addToCart)];
+    const { addToCart } = this.state;
+
+    // FORMA ANTIGA DE NÃO REPETIR OS PRODUTOS NO CARRINHO.
+    // const noRepetElementsAddToCart = [...new Set(addToCart)];
+    const getById = addToCart.map((e) => e.id); // nova forma.
+    const noRepetGetById = [...new Set(getById)];
+    const noRepetElementsAddToCart = noRepetGetById.reduce((accumulate, id) => {
+      const inArray = addToCart.find((e) => e.id === id);
+      accumulate.push(inArray);
+      return accumulate;
+    }, []);
+    noRepetElementsAddToCart.sort();
+
+    console.clear();
+    console.log('ShoppingCart addToCart', addToCart);
 
     return (
       <div>
@@ -109,7 +162,7 @@ class ShoppingCart extends React.Component {
                   </button>
 
                   <p>
-                    { this.countRepeatedElements(productState, product) }
+                    { this.countRepeatedElements(addToCart, product) }
                   </p>
 
                   <button

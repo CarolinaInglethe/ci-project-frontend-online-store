@@ -23,6 +23,10 @@ class CheckoutForm extends Component {
     const { products2 } = state;
     const { noRepetElementsAddToCart } = products;
     const { addToCart } = products2;
+
+    console.clear();
+    console.log('Checkout addToCart', addToCart);
+
     return (
       <div>
 

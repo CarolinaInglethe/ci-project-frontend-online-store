@@ -24,17 +24,28 @@ class ProductDetails extends React.Component {
     const productId = event.target.id;
     const filterProduct = listProducts.filter((result) => result.id === productId);
     const [objectProduct] = filterProduct; // sem filtro: [...addToCart, objectProduct]
+
+    const sumAll = [...stateAddToCart, objectProduct];
+    const jsonAddToCart = JSON.stringify(sumAll);
+    localStorage.removeItem('cart');
+    localStorage.setItem('cart', jsonAddToCart);
+    const cart = localStorage.getItem('cart');
+    const cartTranslated = JSON.parse(cart);
+
     this.setState({
-      addToCart: [...stateAddToCart, objectProduct], // para ter filtro aqui newArray
+      addToCart: cartTranslated, // para ter filtro aqui newArray
     });
   }
 
   render() {
-    // console.log(this.state.addToCart);
     const { location } = this.props;
     const { state } = location;
     const { product } = state.product;
     const { addToCart } = this.state;
+
+    console.clear();
+    console.log(addToCart);
+
     return (
       <div data-testid="product-detail-name">
 
