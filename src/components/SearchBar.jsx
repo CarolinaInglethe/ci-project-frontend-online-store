@@ -194,7 +194,7 @@ class SearchBar extends React.Component {
                 >
                   <p>{ product.title }</p>
                   <img
-                    src={product.thumbnail}
+                    src={ product.thumbnail }
                     alt="foto"
                     width="100px"
                     className="image-search"

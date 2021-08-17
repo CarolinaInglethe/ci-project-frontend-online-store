@@ -97,8 +97,9 @@ class ProductDetails extends React.Component {
           <p>{ product.title }</p>
           <img
             className="image-details"
-            src={product.thumbnail}
-            alt="foto" width="160px"
+            src={ product.thumbnail }
+            alt="foto"
+            width="160px"
           />
           <p>{ `R$ ${product.price}` }</p>
 

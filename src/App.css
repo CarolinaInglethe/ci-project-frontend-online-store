@@ -94,8 +94,7 @@ header {
   background-color: rgba(0, 0, 0, 0.472);
 }
 
-.image-search,
-.image-details {
+.image-search, .image-details {
   border: 2px outset #7e7761;
   border-radius: 15px;
 }
