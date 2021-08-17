@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-// import ShoppingCartIcon from './ShoppingCartIcon';
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -10,8 +9,9 @@ class ProductDetails extends React.Component {
     const { location } = this.props;
     const { state } = location;
     const { listProducts } = state.listProducts;
+    const { product } = state.product;
     const { addToCart } = state.addToCart;
-    const storaRating = localStorage.getItem('rating');
+    const storaRating = localStorage.getItem(`${product.id}`);
     const translatedRating = JSON.parse(storaRating);
 
     this.state = {
@@ -43,13 +43,16 @@ class ProductDetails extends React.Component {
   }
 
   handleRating(event) {
+    const { location } = this.props;
+    const { state } = location;
+    const { product } = state.product;
+    localStorage.removeItem(`${product.id}`);
+    const rating = JSON.stringify(event.target.value);
+    localStorage.setItem(`${product.id}`, rating);
+    // Esse setState é usado para forçar a página a atualizar.
     this.setState({
       rating: event.target.value,
     });
-    localStorage.removeItem('rating');
-    const rating = JSON.stringify(event.target.value);
-    localStorage.setItem('rating', rating);
-    // console.log(event.target.value)
   }
 
   render() {
@@ -57,9 +60,13 @@ class ProductDetails extends React.Component {
     const { state } = location;
     const { product } = state.product;
     const { addToCart, rating } = this.state;
+    // const getRating = localStorage.getItem(`${product.id}`);
+    // const getRatingTranslated = JSON.parse(getRating);
 
-    // console.clear();
-    // console.log(addToCart);
+    console.clear();
+    console.log(addToCart);
+    console.log(`Storage do ${product.id}`, localStorage[`${product.id}`]);
+    console.log('Storage:', localStorage);
 
     return (
       <div data-testid="product-detail-name">
