@@ -163,7 +163,7 @@ class SearchBar extends React.Component {
                 product: { addToCart },
               },
             } }
-            className="link"
+            className="link-cart"
             data-testid="shopping-cart-button"
           >
             <div
@@ -193,7 +193,12 @@ class SearchBar extends React.Component {
                   data-testid="product"
                 >
                   <p>{ product.title }</p>
-                  <img src={ product.thumbnail } alt="foto" width="100px" />
+                  <img
+                    src={ product.thumbnail }
+                    alt="foto"
+                    width="100px"
+                    className="image-search"
+                  />
                   <p>{ `R$ ${product.price}` }</p>
 
                   { product.shipping.free_shipping

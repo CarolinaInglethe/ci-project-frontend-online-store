@@ -95,7 +95,12 @@ class ProductDetails extends React.Component {
 
         <div className="card-product-detail">
           <p>{ product.title }</p>
-          <img src={ product.thumbnail } alt="foto" width="160px" />
+          <img
+            className="image-details"
+            src={ product.thumbnail }
+            alt="foto"
+            width="160px"
+          />
           <p>{ `R$ ${product.price}` }</p>
 
           { product.shipping.free_shipping

@@ -27,6 +27,7 @@ header {
 .link-cart {
   color: rgba(0, 0, 0, 0.904);
   font-size: xx-large;
+  text-decoration: none;
 }
 
 .link-cart:hover {
@@ -91,6 +92,11 @@ header {
 
 .link-details:hover {
   background-color: rgba(0, 0, 0, 0.472);
+}
+
+.image-search, .image-details {
+  border: 2px outset #7e7761;
+  border-radius: 15px;
 }
 
 .button-addCart {
