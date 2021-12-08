@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import ShoppingCart from './components/ShoppingCart';
 import SearchBar from './components/SearchBar';
 // import ShoppingCartIcon from './components/ShoppingCartIcon';
@@ -9,8 +9,9 @@ import CheckoutForm from './components/CheckoutForm';
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <Router>
+      <div className="App" basename={ process.env.PUBLIC_URL }>
+
         <Switch>
           <Route exact path="/" component={ SearchBar } />
           <Route path="/shopping-cart" component={ ShoppingCart } />
@@ -20,8 +21,9 @@ function App() {
           />
           <Route path="/checkout" component={ CheckoutForm } />
         </Switch>
-      </BrowserRouter>
-    </div>
+
+      </div>
+    </Router>
   );
 }
 
