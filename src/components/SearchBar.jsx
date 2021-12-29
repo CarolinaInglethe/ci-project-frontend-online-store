@@ -100,17 +100,21 @@ class SearchBar extends React.Component {
   // FUNÇÂO QUE CRIA LISTA DE CATEGORIAS:
   listOfCategories(categories) {
     return categories ? categories.map((category) => (
-      <div key={ category.id }>
+      <label
+        key={ category.id }
+        className="categorie"
+        name={ category.name }
+      >
         <input
           data-testid="category"
-          className="categories"
+          className="categorie-input"
           name="1"
           type="radio"
           value={ category.name }
           onChange={ this.handleCategory }
         />
-        <span>{category.name}</span>
-      </div>))
+        <span className="categorie-name">{category.name}</span>
+      </label>))
       : null;
   }
 
@@ -179,9 +183,9 @@ class SearchBar extends React.Component {
         <section className="container">
 
           {/* CHAMA FUNÇÂO QUE CRIA LISTA DE CATEGORIAS DE INPUTS RADIOS : */}
-          <div className="categories-list">
+          <form className="categories-list">
             { this.listOfCategories(categories) }
-          </div>
+          </form>
 
           {/* LISTA DE PRODUTOS REQUISITADOS À API POR CATEGORIA OU NOME : */}
           <div className="products-list">
