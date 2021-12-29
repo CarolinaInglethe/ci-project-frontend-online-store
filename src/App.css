@@ -11,10 +11,10 @@
     bottom: 0;
     color: black;
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
     font-size: x-small;
     justify-content: space-around;
-    padding: 3px 2px;
+    padding: 4px;
     position: fixed;
     text-align: center;
     width: 100%;
@@ -23,22 +23,23 @@
   header label {
     display: flex;
     flex-direction: column;
-    margin: 3px;
+    margin: 5px;
+    width: 40%;
   }
 
   .search-input {
-    margin: 4px 40px;
-    padding: 2px;
+    margin: 4px 1px;
+    padding: 4px;
   }
 
   .search-button {
-    margin: 1px 40px;
+    margin: 3px 1px;
     padding: 3px;
   }
 
   .link-cart {
     color: rgba(0, 0, 0, 0.904);
-    font-size: large;
+    font-size: x-large;
     margin: 3px;
     text-decoration: none;
   }
