@@ -169,6 +169,10 @@
     width: 65%;
   }
 
+  .card-product-detail img {
+    width: 60%;
+  }
+
   .text-area-coment {
     display: flex;
     flex-flow: column;
