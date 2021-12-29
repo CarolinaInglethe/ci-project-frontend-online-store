@@ -100,16 +100,16 @@ class SearchBar extends React.Component {
   // FUNÇÂO QUE CRIA LISTA DE CATEGORIAS:
   listOfCategories(categories) {
     return categories ? categories.map((category) => (
-      <div key={ category.id }>
+      <div key={ category.id } className="categorie">
         <input
           data-testid="category"
-          className="categories"
+          className="categorie-input"
           name="1"
           type="radio"
           value={ category.name }
           onChange={ this.handleCategory }
         />
-        <span>{category.name}</span>
+        <span className="categorie-name">{category.name}</span>
       </div>))
       : null;
   }
