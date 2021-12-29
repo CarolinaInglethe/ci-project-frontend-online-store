@@ -118,6 +118,7 @@
   .image-search, .image-details {
     border: 1px outset #7e776180;
     border-radius: 15px;
+    width: 50%;
   }
 
   .button-addCart {
@@ -142,6 +143,7 @@
     border-radius: 5px;
     color: rgba(0, 0, 0, 0.856);
     font-size: x-large;
+    margin: 2px;
     padding: 4px;
     text-align: center;
     text-decoration: none;
@@ -158,18 +160,20 @@
     border-radius: 30px;
     display: flex;
     flex-flow: column;
+    font-size: small;
     justify-content: space-around;
     margin: auto;
-    margin-top: 50px;
-    padding: 20px;
+    margin-top: 15px;
+    padding: 15px;
     text-align: center;
-    width: 40%;
+    width: 65%;
   }
 
   .text-area-coment {
     display: flex;
     flex-flow: column;
-    margin-top: 40px;
+    margin-top: 20px;
+    width: 70%;
   }
 
   .link-buy {
