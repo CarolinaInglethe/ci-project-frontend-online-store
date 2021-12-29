@@ -84,7 +84,7 @@
     flex-flow: column nowrap;
     justify-content: space-around;
     right: auto;
-    width: 70%;
+    width: 60%;
   }
 
   .card-product {
@@ -116,7 +116,7 @@
   }
 
   .image-search, .image-details {
-    border: 2px outset #7e7761;
+    border: 1px outset #7e776180;
     border-radius: 15px;
   }
 
