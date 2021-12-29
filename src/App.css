@@ -195,13 +195,18 @@
     border: 1px solid rgba(0, 0, 0, 0.109);
     border-radius: 30px;
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
+    font-size: small;
     justify-content: space-around;
     margin: 2px auto;
-    margin-top: 50px;
-    padding: 10px;
+    margin-top: 20px;
+    padding: 15px;
     text-align: center;
-    width: 85%;
+    width: 80%;
+  }
+
+  .card-product-cart img {
+    width: 20%;
   }
 
   .buttons-add-remove-container {
