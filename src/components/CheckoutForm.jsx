@@ -55,7 +55,7 @@ class CheckoutForm extends Component {
 
         <h3>Informações do Comprador:</h3>
 
-        <form id="form-info">
+        <form className="form-info">
           <label htmlFor="checkout-fullname" className="labels-checkout">
             Nome completo
             <input type="text" data-testid="checkout-fullname" />
