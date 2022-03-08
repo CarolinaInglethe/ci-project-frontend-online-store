@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ci-project-frontend-online-store/static/css/main.16d06aa9.chunk.css",
-    "main.js": "/ci-project-frontend-online-store/static/js/main.e505a66a.chunk.js",
-    "main.js.map": "/ci-project-frontend-online-store/static/js/main.e505a66a.chunk.js.map",
+    "main.js": "/ci-project-frontend-online-store/static/js/main.83dc9555.chunk.js",
+    "main.js.map": "/ci-project-frontend-online-store/static/js/main.83dc9555.chunk.js.map",
     "runtime-main.js": "/ci-project-frontend-online-store/static/js/runtime-main.b3d38801.js",
     "runtime-main.js.map": "/ci-project-frontend-online-store/static/js/runtime-main.b3d38801.js.map",
     "static/js/2.bd9ee1d0.chunk.js": "/ci-project-frontend-online-store/static/js/2.bd9ee1d0.chunk.js",
     "static/js/2.bd9ee1d0.chunk.js.map": "/ci-project-frontend-online-store/static/js/2.bd9ee1d0.chunk.js.map",
     "index.html": "/ci-project-frontend-online-store/index.html",
-    "precache-manifest.b3166531d9876d9b5ae722f178ea7bd1.js": "/ci-project-frontend-online-store/precache-manifest.b3166531d9876d9b5ae722f178ea7bd1.js",
+    "precache-manifest.26faf3a63985c552b927e05bcc8d89ce.js": "/ci-project-frontend-online-store/precache-manifest.26faf3a63985c552b927e05bcc8d89ce.js",
     "service-worker.js": "/ci-project-frontend-online-store/service-worker.js",
     "static/css/main.16d06aa9.chunk.css.map": "/ci-project-frontend-online-store/static/css/main.16d06aa9.chunk.css.map",
     "static/js/2.bd9ee1d0.chunk.js.LICENSE.txt": "/ci-project-frontend-online-store/static/js/2.bd9ee1d0.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.b3d38801.js",
     "static/js/2.bd9ee1d0.chunk.js",
     "static/css/main.16d06aa9.chunk.css",
-    "static/js/main.e505a66a.chunk.js"
+    "static/js/main.83dc9555.chunk.js"
   ]
 }
