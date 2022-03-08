@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "./static/css/main.16d06aa9.chunk.css",
-    "main.js": "./static/js/main.1809c329.chunk.js",
-    "main.js.map": "./static/js/main.1809c329.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.6cc6b37c.js",
-    "runtime-main.js.map": "./static/js/runtime-main.6cc6b37c.js.map",
-    "static/js/2.bd9ee1d0.chunk.js": "./static/js/2.bd9ee1d0.chunk.js",
-    "static/js/2.bd9ee1d0.chunk.js.map": "./static/js/2.bd9ee1d0.chunk.js.map",
-    "index.html": "./index.html",
-    "precache-manifest.cc5aa26d21d40b93eccb29de4ae80751.js": "./precache-manifest.cc5aa26d21d40b93eccb29de4ae80751.js",
-    "service-worker.js": "./service-worker.js",
-    "static/css/main.16d06aa9.chunk.css.map": "./static/css/main.16d06aa9.chunk.css.map",
-    "static/js/2.bd9ee1d0.chunk.js.LICENSE.txt": "./static/js/2.bd9ee1d0.chunk.js.LICENSE.txt"
+    "main.css": "/ci-project-frontend-online-store/static/css/main.16d06aa9.chunk.css",
+    "main.js": "/ci-project-frontend-online-store/static/js/main.e505a66a.chunk.js",
+    "main.js.map": "/ci-project-frontend-online-store/static/js/main.e505a66a.chunk.js.map",
+    "runtime-main.js": "/ci-project-frontend-online-store/static/js/runtime-main.b3d38801.js",
+    "runtime-main.js.map": "/ci-project-frontend-online-store/static/js/runtime-main.b3d38801.js.map",
+    "static/js/2.bd9ee1d0.chunk.js": "/ci-project-frontend-online-store/static/js/2.bd9ee1d0.chunk.js",
+    "static/js/2.bd9ee1d0.chunk.js.map": "/ci-project-frontend-online-store/static/js/2.bd9ee1d0.chunk.js.map",
+    "index.html": "/ci-project-frontend-online-store/index.html",
+    "precache-manifest.b3166531d9876d9b5ae722f178ea7bd1.js": "/ci-project-frontend-online-store/precache-manifest.b3166531d9876d9b5ae722f178ea7bd1.js",
+    "service-worker.js": "/ci-project-frontend-online-store/service-worker.js",
+    "static/css/main.16d06aa9.chunk.css.map": "/ci-project-frontend-online-store/static/css/main.16d06aa9.chunk.css.map",
+    "static/js/2.bd9ee1d0.chunk.js.LICENSE.txt": "/ci-project-frontend-online-store/static/js/2.bd9ee1d0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.6cc6b37c.js",
+    "static/js/runtime-main.b3d38801.js",
     "static/js/2.bd9ee1d0.chunk.js",
     "static/css/main.16d06aa9.chunk.css",
-    "static/js/main.1809c329.chunk.js"
+    "static/js/main.e505a66a.chunk.js"
   ]
 }
