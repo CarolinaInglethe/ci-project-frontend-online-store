@@ -72,7 +72,7 @@ Projeto em evolução, com melhorias planejadas:
 
 ## 📸 Preview
 
-(Adicionar prints aqui)
+![Home](./public/onlinestores-1.PNG)
 
 ---
 
