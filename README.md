@@ -72,10 +72,10 @@ Projeto em evolução, com melhorias planejadas:
 
 ## 📸 Preview
 
-<img src="././public/onlinestores-1.PNG" width="450"/>
-<img src="././public/onlinestores-2.PNG" width="450"/>
-<img src="././public/onlinestores-3.PNG" width="450"/>
-<img src="././public/onlinestores-1.PNG" width="450"/>
+<img src="./public/onlinestores-1.PNG" width="450"/>
+<img src="./public/onlinestores-2.PNG" width="450"/>
+<img src="./public/onlinestores-3.PNG" width="450"/>
+<img src="./public/onlinestores-1.PNG" width="450"/>
 ![Home](./public/Onlinesores-4.PNG)
 
 ---
