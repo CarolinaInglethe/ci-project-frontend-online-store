@@ -73,6 +73,9 @@ Projeto em evolução, com melhorias planejadas:
 ## 📸 Preview
 
 ![Home](./public/onlinestores-1.PNG)
+![Home](./public/onlinestores-2.PNG)
+![Home](./public/onlinestores-3.PNG)
+![Home](./public/Onlinesores-4.PNG)
 
 ---
 
