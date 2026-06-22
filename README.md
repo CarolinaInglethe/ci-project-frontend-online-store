@@ -76,8 +76,7 @@ Projeto em evolução, com melhorias planejadas:
   <img src="./public/onlinestores-2.PNG" width="250"/>
   <img src="./public/onlinestores-3.PNG" width="250"/>
 </p>
-
-<img src="./public/Onlinesores-4.PNG" width="450"/>
+<p align="center"> <img src="./public/Onlinesores-4.PNG" width="450"/> </p>
 
 ---
 
