@@ -25,14 +25,20 @@ export async function getProductsFromCategoryAndQuery(categoryId, query) {
     .then((response) => { 
       if(!response.ok) {
         throw new Error("API falhou , usando mock");
-        return productsMock.results
-        .filter((item) => item.category_id.toLowerCase().includes(categoryId.toLowerCase()))
+        console.log(productsMock.results);
+
+        return productsMock.results.filter((item) => {
+          const matchCategory = categoryId ? item.category_id === categoryId : true;
+          const matchQuery = query ? item.title.toLowerCase().includes(query.toLowerCase()) : true;
+          return matchCategory || matchQuery;
+        });
       }
       return response.json();
     })
     .catch((error) => {
-      console.log(error);
-      return [];
+      console.log("Erro de rede , usando mock", error);
+      return productsMock.results
+        .filter((item) => item.category_id.toLowerCase().includes(categoryId.toLowerCase()));
     });
 
   return data;
