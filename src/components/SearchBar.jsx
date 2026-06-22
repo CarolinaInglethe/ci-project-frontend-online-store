@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
     this.state = {
       categories: [],
       inputValue: '',
-      listProducts: {},
+      listProducts: [],
       selectCategory: '',
       // addToCart: isLocalStorageOn ? isLocalStorageOn : [],
       addToCart: [],
@@ -30,6 +30,10 @@ class SearchBar extends React.Component {
         categories: result,
       }));
 
+    getProductsFromCategoryAndQuery('','')
+    .then((result) => this.setState({
+      listProducts: result,
+    }));
     this.handleLocalStorage();
   }
 
@@ -59,13 +63,13 @@ class SearchBar extends React.Component {
   handleCategory(event) {
     const { inputValue, categories } = this.state;
     const getCategory = event.target.value;
-    const filteredCategory = categories
-      .filter((e) => e.name === getCategory)[0].id;
+    const filteredCategory = categories.filter((e) => e.name === getCategory)[0].id;
+
     getProductsFromCategoryAndQuery(filteredCategory,
       inputValue)
       .then((result) => {
         this.setState({
-          listProducts: result.results,
+          listProducts: result,
         });
       });
     this.setState({
@@ -92,13 +96,18 @@ class SearchBar extends React.Component {
     const { inputValue, selectCategory } = this.state;
     getProductsFromCategoryAndQuery(selectCategory,
       inputValue)
-      .then((result) => this.setState({
-        listProducts: result.results,
-      }));
+      .then((result) => {
+        console.log('result', result);
+         this.setState({
+        listProducts: result,
+      })
+     });
   }
 
   // FUNÇÂO QUE CRIA LISTA DE CATEGORIAS:
   listOfCategories(categories) {
+    if (!Array.isArray(categories)) return null;
+    console.log(categories)
     return categories ? categories.map((category) => (
       <label
         key={ category.id }
