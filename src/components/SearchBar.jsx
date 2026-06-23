@@ -13,7 +13,6 @@ class SearchBar extends React.Component {
       selectCategory: '',
       // addToCart: isLocalStorageOn ? isLocalStorageOn : [],
       addToCart: [],
-      loading: true,
     };
 
     this.listOfCategories = this.listOfCategories.bind(this);
