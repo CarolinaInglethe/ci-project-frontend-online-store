@@ -139,9 +139,6 @@ class SearchBar extends React.Component {
       translated = [];
     }
 
-    console.clear();
-    console.log('SearchBar addToCart', addToCart);
-
     return (
       <section>
 
