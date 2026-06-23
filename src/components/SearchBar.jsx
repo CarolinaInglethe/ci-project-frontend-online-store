@@ -106,7 +106,7 @@ class SearchBar extends React.Component {
 
   // FUNÇÂO QUE CRIA LISTA DE CATEGORIAS:
   listOfCategories(categories) {
-    if (!Array.isArray(categories)) return null;
+    if (!Array.isArray(categories)) return [];
     console.log(categories)
     return categories ? categories.map((category) => (
       <label
@@ -124,7 +124,7 @@ class SearchBar extends React.Component {
         />
         <span className="categorie-name">{category.name}</span>
       </label>))
-      : null;
+      : [] ;
   }
 
   render() {
