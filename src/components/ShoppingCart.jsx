@@ -99,9 +99,6 @@ class ShoppingCart extends React.Component {
     }, []);
     noRepetElementsAddToCart.sort();
 
-    console.clear();
-    console.log('ShoppingCart addToCart', addToCart);
-
     return (
       <div>
 
